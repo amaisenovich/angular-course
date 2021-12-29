@@ -10,6 +10,5 @@
       No server was created!
     </p>
   </ng-template>
-  <app-server></app-server>
-  <app-server></app-server>
+  <app-server *ngFor="let server of servers; let i = index"></app-server>
 </div>
