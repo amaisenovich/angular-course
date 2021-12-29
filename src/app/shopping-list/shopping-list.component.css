@@ -1,0 +1,14 @@
+ul {
+  margin: 0;
+  margin-top: 10px;
+}
+
+li {
+  display: block;
+  padding: 0;
+  margin-top: 10px;
+}
+
+li:not(:last-child) {
+  margin-bottom: 10px;
+}

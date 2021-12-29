@@ -1,1 +1,8 @@
-<p>recipe-list works!</p>
+<div class="recipe-list-items">
+  <ul class="list-inline">
+    <li *ngFor="let recipe of recipes">
+      <app-recipe-list-item></app-recipe-list-item>
+    </li>
+  </ul>
+  <app-recipe-list-item-detail></app-recipe-list-item-detail>
+</div>

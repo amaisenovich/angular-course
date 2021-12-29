@@ -1,0 +1,17 @@
+.shopping-list-item {
+  padding: 1rem;
+  background-color: #eccc68;
+  border-radius: 3px;
+  display: flex;
+  font-weight: bold;
+}
+
+.shopping-list-item-name {
+  display: inline-flex;
+  flex: 50%;
+}
+
+.shopping-list-item-amount {
+  flex: 50%;
+  text-align: right;
+}

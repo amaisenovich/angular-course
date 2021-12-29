@@ -1,0 +1,16 @@
+.recipe-list-item {
+  background-color: #ff4757;
+  display: flex;
+  padding: 1rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.recipe-list-item-name {
+  flex: 50%;
+}
+
+.recipe-list-item-ingredients {
+  flex: 50%;
+  text-align: right;
+}
