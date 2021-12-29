@@ -3,15 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ServerComponent } from './server/server.component';
-import { ServersComponent } from './servers/servers.component';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { ShoppingListItemComponent } from './shopping-list-item/shopping-list-item.component';
+import { ShoppingListEditComponent } from './shopping-list-edit/shopping-list-edit.component';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { RecipeListItemComponent } from './recipe-list-item/recipe-list-item.component';
+import { RecipeListItemDetailComponent } from './recipe-list-item-detail/recipe-list-item-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ServerComponent,
-    ServersComponent
+    HeaderComponent,
+    ShoppingListComponent,
+    ShoppingListItemComponent,
+    ShoppingListEditComponent,
+    RecipeListComponent,
+    RecipeListItemComponent,
+    RecipeListItemDetailComponent
   ],
   imports: [
     BrowserModule,

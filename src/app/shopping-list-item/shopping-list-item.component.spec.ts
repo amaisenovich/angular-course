@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddServerComponent } from './add-server.component';
+import { ShoppingListItemComponent } from './shopping-list-item.component';
 
-describe('AddServerComponent', () => {
-  let component: AddServerComponent;
-  let fixture: ComponentFixture<AddServerComponent>;
+describe('ShoppingListItemComponent', () => {
+  let component: ShoppingListItemComponent;
+  let fixture: ComponentFixture<ShoppingListItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddServerComponent ]
+      declarations: [ ShoppingListItemComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddServerComponent);
+    fixture = TestBed.createComponent(ShoppingListItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
