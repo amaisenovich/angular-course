@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
   styleUrls: ['./servers.component.css']
 })
-export class ServersComponent implements OnInit {
+export class ServersComponent {
+  allowAddServer = false
 
-  constructor() { }
+  serverName = ''
 
-  ngOnInit(): void {
+  constructor() {
+    this.scheduleButtonToggle()
   }
 
+  scheduleButtonToggle(): void {
+    setTimeout(
+      () => {
+        this.allowAddServer = true
+        this.serverName += '3'
+      },
+      2000
+    )
+  }
+
+  onAddServerClick(): void {
+    alert('Button clicked!')
+  }
+
+  onServerNameKeyup(e: KeyboardEvent): void {
+    const input = e.target as HTMLInputElement
+    this.serverName = input.value
+  }
 }
