@@ -4,6 +4,12 @@
   <button class="btn btn-primary" [disabled]="!allowAddServer" (click)="onAddServerClick()">
     Add Server
   </button>
+  <p *ngIf="servers.length > 0; else noServer">The server was created with name: {{ servers[servers.length - 1] }}</p>
+  <ng-template #noServer>
+    <p>
+      No server was created!
+    </p>
+  </ng-template>
   <app-server></app-server>
   <app-server></app-server>
 </div>

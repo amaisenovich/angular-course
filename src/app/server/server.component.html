@@ -1,1 +1,6 @@
-<h3>{{ 'Server' }} with id {{ ip }} is now {{ getServerStatus() }}</h3>
+<h3>
+  Server with name {{ serverName }} is now
+  <span [ngStyle]="{'color': serverStatusColor}" [ngClass]="{ 'online': serverStatus === 'online' }">
+    {{ serverStatus }}
+  </span>
+</h3>

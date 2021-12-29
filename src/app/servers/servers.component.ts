@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+const WHIND_UP_TIME = 2000
+
 @Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
@@ -10,22 +12,24 @@ export class ServersComponent {
 
   serverName = ''
 
+  servers: Array<string> = []
+
   constructor() {
-    this.scheduleButtonToggle()
+    this.scheduleAddServerToggle()
   }
 
-  scheduleButtonToggle(): void {
+  scheduleAddServerToggle(): void {
     setTimeout(
       () => {
         this.allowAddServer = true
-        this.serverName += '3'
       },
-      2000
+      WHIND_UP_TIME
     )
   }
 
   onAddServerClick(): void {
-    alert('Button clicked!')
+    this.servers.push(this.serverName)
+    this.serverName = ''
   }
 
   onServerNameKeyup(e: KeyboardEvent): void {
