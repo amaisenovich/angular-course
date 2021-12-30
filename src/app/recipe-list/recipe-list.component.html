@@ -1,8 +1,15 @@
-<div class="recipe-list-items">
-  <ul class="list-inline">
-    <li *ngFor="let recipe of recipes">
-      <app-recipe-list-item></app-recipe-list-item>
-    </li>
-  </ul>
-  <app-recipe-list-item-detail></app-recipe-list-item-detail>
+<div class="row">
+  <div class="col-sx-12">
+    <app-recipe-list-commands class="recipe-list-commands"></app-recipe-list-commands>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sx-12">
+    <ul class="list-inline">
+      <li *ngFor="let recipe of recipes">
+        <app-recipe-list-item></app-recipe-list-item>
+      </li>
+    </ul>
+  </div>
 </div>

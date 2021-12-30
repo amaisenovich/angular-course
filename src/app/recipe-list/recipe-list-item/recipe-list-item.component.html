@@ -1,11 +1,13 @@
-<div class="recipe-list-item">
-  <div class="recipe-list-item-name">
-    <span>{{ recipe.name }}</span>
+<a href="#" class="list-group-item clearfix">
+  <div class="pull-left recipe-list-item-description">
+    <h4 class="list-group-item-heading">
+      {{ recipe.name }}
+    </h4>
+    <p class="list-group-item-text">
+      {{ recipe.description }}
+    </p>
   </div>
-  <div class="recipe-list-item-ingredients">
-    <span *ngFor="let ingredient of recipe.ingredients; let i = index">
-      <span>{{ ingredient.name }}</span>
-      <span *ngIf="i < recipe.ingredients.length - 1"> - </span>
-    </span>
-  </div>
-</div>
+  <span class="pull-right recipe-list-item-image">
+    <img [src]="recipe.image" alt="" class="img-responsive">
+  </span>
+</a>

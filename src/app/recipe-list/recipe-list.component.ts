@@ -9,7 +9,7 @@ import { Ingredient } from 'src/models/Ingredient';
 })
 export class RecipeListComponent implements OnInit {
 
-  recipes: Array<Recipe> = [
+  recipes: Recipe[] = [
     new Recipe(
       'Apple Pie',
       'This floral take on a classic apple pie from Back in the Day Bakery owner Cheryl Day may...',
