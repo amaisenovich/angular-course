@@ -11,6 +11,7 @@
 
 .recipe-list-item-image > img {
   max-height: 61px;
+  border-radius: 3px;
 }
 
 a.list-group-item:focus,

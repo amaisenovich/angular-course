@@ -1,29 +1,38 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingListItemComponent } from './shopping-list/shopping-list-item/shopping-list-item.component';
-import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/shopping-list-edit.component';
-import { RecipeListComponent } from './recipe-list/recipe-list.component';
-import { RecipeListItemComponent } from './recipe-list/recipe-list-item/recipe-list-item.component';
-import { RecipeListItemDetailComponent } from './recipe-list/recipe-list-item/recipe-list-item-detail/recipe-list-item-detail.component';
-import { RecipeListCommandsComponent } from './recipe-list/recipe-list-commands/recipe-list-commands.component';
+
+import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
+import { ShoppingListComponent } from './shopping-page/shopping-list/shopping-list.component';
+import { ShoppingListItemComponent } from './shopping-page/shopping-list/shopping-list-item/shopping-list-item.component';
+import { ShoppingListEditComponent } from './shopping-page/shopping-list/shopping-list-edit/shopping-list-edit.component';
+
+import { RecipesPageComponent } from './recipes-page/recipes-page.component';
+import { RecipeListComponent } from './recipes-page/recipe-list/recipe-list.component';
+import { RecipeListItemComponent } from './recipes-page/recipe-list/recipe-list-item/recipe-list-item.component';
+import { RecipeDetailsComponent } from './recipes-page/recipe-details/recipe-details.component';
+import { RecipeListCommandsComponent } from './recipes-page/recipe-list/recipe-list-commands/recipe-list-commands.component';
+import { RecipeDetailsCommandsComponent } from './recipes-page/recipe-details/recipe-details-commands/recipe-details-commands.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    ShoppingPageComponent,
     ShoppingListComponent,
     ShoppingListItemComponent,
     ShoppingListEditComponent,
+    RecipesPageComponent,
     RecipeListComponent,
     RecipeListItemComponent,
-    RecipeListItemDetailComponent,
-    RecipeListCommandsComponent
+    RecipeDetailsComponent,
+    RecipeListCommandsComponent,
+    RecipeDetailsCommandsComponent
   ],
   imports: [
     BrowserModule,

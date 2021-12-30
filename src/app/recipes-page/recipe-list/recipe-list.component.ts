@@ -1,4 +1,4 @@
-import { Recipe } from '../../models/Recipe'
+import { Recipe } from '../../../models/Recipe'
 import { Component, OnInit } from '@angular/core';
 import { Ingredient } from 'src/models/Ingredient';
 

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from '../../../models/Recipe';
-import { Ingredient } from '../../../models/Ingredient';
+import { Recipe } from '../../../models/Recipe'
+import { Ingredient } from '../../../models/Ingredient'
 
 @Component({
-  selector: 'app-recipe-list-item',
-  templateUrl: './recipe-list-item.component.html',
-  styleUrls: ['./recipe-list-item.component.css']
+  selector: 'app-recipe-details',
+  templateUrl: './recipe-details.component.html',
+  styleUrls: ['./recipe-details.component.css']
 })
-export class RecipeListItemComponent implements OnInit {
+export class RecipeDetailsComponent implements OnInit {
   recipe = new Recipe(
     'Apple Pie',
     'This floral take on a classic apple pie from Back in the Day Bakery owner Cheryl Day may...',
