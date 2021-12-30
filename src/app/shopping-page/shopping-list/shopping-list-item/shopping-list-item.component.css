@@ -1,0 +1,11 @@
+.list-group-item {
+  font-weight: bold;
+  background-color: #e5dbff;
+}
+
+a.list-group-item:focus,
+ a.list-group-item:hover, 
+ button.list-group-item:focus, 
+ button.list-group-item:hover {
+   background-color: #d0bfff;
+ }

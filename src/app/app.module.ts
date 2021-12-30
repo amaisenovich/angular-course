@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
 import { ShoppingListComponent } from './shopping-page/shopping-list/shopping-list.component';
 import { ShoppingListItemComponent } from './shopping-page/shopping-list/shopping-list-item/shopping-list-item.component';
-import { ShoppingListEditComponent } from './shopping-page/shopping-list/shopping-list-edit/shopping-list-edit.component';
+import { ShoppingListEditComponent } from './shopping-page/shopping-details/shopping-details.component';
 
 import { RecipesPageComponent } from './recipes-page/recipes-page.component';
 import { RecipeListComponent } from './recipes-page/recipe-list/recipe-list.component';

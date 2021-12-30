@@ -1,0 +1,9 @@
+.shopping-list-edit-form {
+  padding: 10px 15px;
+  background-color: #acc5b4;
+  border-radius: 3px;
+}
+
+.shopping-list-edit-controls button:not(:last-child) {
+  margin-right: 5px;
+}
