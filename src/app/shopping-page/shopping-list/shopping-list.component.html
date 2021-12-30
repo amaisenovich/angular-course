@@ -1,8 +1,11 @@
-<app-shopping-list-edit></app-shopping-list-edit>
-<div class="shopping-list-items">
-  <ul class="list-inline">
-    <li *ngFor="let ingredient of ingredients">
-      <app-shopping-list-item></app-shopping-list-item>
-    </li>
-  </ul>
+<div class="row">
+  <div class="col-xs-12">
+    <app-shopping-list-edit></app-shopping-list-edit>
+    <hr>
+    <ul class="list-group">
+      <li *ngFor="let ingredient of ingredients">
+        <app-shopping-list-item></app-shopping-list-item>
+      </li>
+    </ul>
+  </div>
 </div>
