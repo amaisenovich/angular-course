@@ -8,7 +8,7 @@ import { Recipe } from 'src/models/recipe.model';
 })
 export class RecipeListItemComponent {
   @Output()
-  click = new EventEmitter<Recipe>()
+  selection = new EventEmitter<Recipe>()
 
   @Input()
   recipe: Recipe | null = null
@@ -18,6 +18,6 @@ export class RecipeListItemComponent {
       return
     }
 
-    this.click.emit(this.recipe)
+    this.selection.emit(this.recipe)
   }
 }
