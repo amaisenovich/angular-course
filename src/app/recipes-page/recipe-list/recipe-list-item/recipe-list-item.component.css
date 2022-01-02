@@ -9,7 +9,16 @@
   max-width: calc(100% - 71px);
 }
 
+.recipe-list-item-description > p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .recipe-list-item-image > img {
+  width: 61px;
   max-height: 61px;
   border-radius: 3px;
 }

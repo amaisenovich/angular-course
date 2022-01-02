@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <app-header></app-header>
+      <app-header (navigation)="onNavigation($event)"></app-header>
     </div>
   </div>
-  <app-recipes-page></app-recipes-page>
-  <br>
-  <app-shopping-page></app-shopping-page>
+  <app-recipes-page *ngIf="currentPage === Page.RECIPES"></app-recipes-page>
+  <app-shopping-page *ngIf="currentPage === Page.SHOPPING"></app-shopping-page>
 </div>
