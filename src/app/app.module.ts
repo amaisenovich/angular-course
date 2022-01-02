@@ -17,6 +17,7 @@ import { RecipeListItemComponent } from './recipes-page/recipe-list/recipe-list-
 import { RecipeDetailsComponent } from './recipes-page/recipe-details/recipe-details.component';
 import { RecipeListCommandsComponent } from './recipes-page/recipe-list/recipe-list-commands/recipe-list-commands.component';
 import { RecipeDetailsCommandsComponent } from './recipes-page/recipe-details/recipe-details-commands/recipe-details-commands.component';
+import { DropdownDirective } from 'src/directives/dropdown.directive';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RecipeDetailsCommandsComponent } from './recipes-page/recipe-details/re
     RecipeListItemComponent,
     RecipeDetailsComponent,
     RecipeListCommandsComponent,
-    RecipeDetailsCommandsComponent
+    RecipeDetailsCommandsComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

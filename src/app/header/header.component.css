@@ -33,6 +33,12 @@
   color: white;
 }
 
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+  background-color: #c46800;
+}
+
 header .navbar-default .navbar-toggle {
   border-color: #ff8902;
 }
