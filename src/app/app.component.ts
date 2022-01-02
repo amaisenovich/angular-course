@@ -9,7 +9,7 @@ import { Page } from 'src/enums/Page';
 export class AppComponent {
   Page = Page
 
-  currentPage = Page.RECIPES
+  currentPage = Page.SHOPPING
 
   onNavigation = (page: Page) => {
     this.currentPage = page

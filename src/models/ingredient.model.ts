@@ -4,4 +4,8 @@ export class Ingredient {
     public amount: number
   ) {
   }
+
+  public isValid = () => {
+    return !!this.name && !!this.amount
+  }
 }

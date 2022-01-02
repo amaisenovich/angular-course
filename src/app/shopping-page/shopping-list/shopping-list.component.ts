@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Ingredient } from 'src/models/ingredient.model'
 
 @Component({
@@ -6,16 +6,14 @@ import { Ingredient } from 'src/models/ingredient.model'
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit {
-  ingredients = [
-    new Ingredient('Apple', 10),
-    new Ingredient('Banana', 4),
-    new Ingredient('Peach', 6)
-  ]
+export class ShoppingListComponent {
+  @Input()
+  ingredients: Ingredient[] = []
 
-  constructor() { }
+  @Output()
+  selection = new EventEmitter<Ingredient>()
 
-  ngOnInit(): void {
+  onIngredientClick = (ingredient: Ingredient) => {
+    this.selection.emit(ingredient)
   }
-
 }
