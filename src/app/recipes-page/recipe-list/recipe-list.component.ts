@@ -40,7 +40,7 @@ export class RecipeListComponent implements OnInit{
     this.selection.emit(this.recipes[0])
   }
 
-  onRecipeSelection = (recipe: Recipe) => {
+  onRecipeClick = (recipe: Recipe) => {
     this.selection.emit(recipe)
   }
 }
