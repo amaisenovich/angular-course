@@ -10,7 +10,6 @@ export class RecipesPageComponent {
   currentRecipe: Recipe | null = null;
 
   onRecipeSelection = (recipe: Recipe) => {
-    debugger
     this.currentRecipe = recipe
   }
 }
