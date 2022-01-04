@@ -1,19 +1,22 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Ingredient } from 'src/models/ingredient.model'
+import { ShoppingService } from 'src/services/shopping.service'
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent {
-  @Input()
+export class ShoppingListComponent implements OnInit {
   ingredients: Ingredient[] = []
 
-  @Output()
-  selection = new EventEmitter<Ingredient>()
+  constructor(private shoppingService: ShoppingService) {
+  }
 
-  onIngredientClick = (ingredient: Ingredient) => {
-    this.selection.emit(ingredient)
+  ngOnInit() {
+    this.ingredients = this.shoppingService.get()
+    this.shoppingService.onIngredientsUpdated.subscribe((ingredients) => {
+      this.ingredients = ingredients
+    })
   }
 }

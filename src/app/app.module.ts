@@ -19,7 +19,6 @@ import { RecipeListCommandsComponent } from './recipes-page/recipe-list/recipe-l
 import { RecipeDetailsCommandsComponent } from './recipes-page/recipe-details/recipe-details-commands/recipe-details-commands.component';
 import { DropdownDirective } from 'src/directives/dropdown.directive';
 
-
 @NgModule({
   declarations: [
     AppComponent,

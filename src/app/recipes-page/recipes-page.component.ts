@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { Recipe } from 'src/models/recipe.model';
+import { SelectionService } from 'src/services/selection.service';
 
 @Component({
   selector: 'app-recipes-page',
   templateUrl: './recipes-page.component.html',
-  styleUrls: ['./recipes-page.component.css']
+  styleUrls: ['./recipes-page.component.css'],
+  providers: [SelectionService]
 })
 export class RecipesPageComponent {
-  currentRecipe: Recipe | null = null;
-
-  onRecipeSelection = (recipe: Recipe) => {
-    this.currentRecipe = recipe
-  }
 }

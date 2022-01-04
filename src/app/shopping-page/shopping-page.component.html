@@ -1,8 +1,7 @@
 <div class="row">
-  <app-shopping-details [ingredient]="currentIngredient" (add)="onIngredientAdd($event)"
-    (delete)="onIngredientDelete($event)" (clear)="onIngredientUnselected()" (update)="onIngredientUpdate($event)"></app-shopping-details>
+  <app-shopping-details></app-shopping-details>
 </div>
 
 <div class="row">
-  <app-shopping-list [ingredients]="ingredients" (selection)="onIngredientSelection($event)"></app-shopping-list>
+  <app-shopping-list></app-shopping-list>
 </div>

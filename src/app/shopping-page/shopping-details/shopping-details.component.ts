@@ -1,111 +1,130 @@
-import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Ingredient } from 'src/models/ingredient.model';
+import { SelectionService } from 'src/services/selection.service';
+import { ShoppingService } from 'src/services/shopping.service';
+
+const EMPTY_NAME = ''
+
+const EMPTY_AMOUNT = 0
 
 @Component({
   selector: 'app-shopping-details',
   templateUrl: './shopping-details.component.html',
   styleUrls: ['./shopping-details.component.css']
 })
-export class ShoppingListEditComponent implements OnChanges {
-  @Output()
-  add = new EventEmitter<Ingredient>();
+export class ShoppingListEditComponent implements OnInit {
+  ingredient: Ingredient | undefined = undefined;
 
-  @Output()
-  delete = new EventEmitter<Ingredient>();
+  name: string = EMPTY_NAME
 
-  @Output()
-  clear = new EventEmitter<Ingredient>();
+  amount: number = EMPTY_AMOUNT;
 
-  @Output()
-  update = new EventEmitter<Ingredient>();
+  constructor(
+    private shoppingService: ShoppingService,
+    private selectionService: SelectionService<Ingredient>
+  ) {
+  }
 
-  @Input()
-  ingredient: Ingredient | null = null;
+  ngOnInit() {
+    this.ingredient = this.selectionService.get()
+    this.selectionService.onSelected.subscribe(this.onIngredientSelected)
+  }
 
-  name: string = ''
+  setIngredient = (ingredient: Ingredient | undefined) => {
+    this.ingredient = ingredient
+    this.name = ingredient ? ingredient.name : EMPTY_NAME
+    this.amount = ingredient ? ingredient.amount : EMPTY_AMOUNT
+  }
 
-  amount: number = 0;
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (!this.ingredient) {
+  onIngredientSelected = (ingredient: Ingredient | undefined) => {
+    if (this.ingredient?.id === ingredient?.id) {
       return
     }
 
-    if (!this.isEmpty()) {
-      const confirm = window.confirm('Do you want to clear your form?')
-      if (confirm) {
-        this.clean()
-      }
+    if (!this.hasChanges()) {
+      return this.setIngredient(ingredient)
     }
 
-    this.name = this.ingredient.name
-    this.amount = this.ingredient.amount
+    const confirm = window.confirm('Do you want to undo your changes?')
+    if (confirm) {
+      return this.setIngredient(ingredient)
+    }
+
+    this.ingredient && this.selectionService.select(this.ingredient)
   }
 
   isValid = () => {
-    return new Ingredient(this.name, this.amount).isValid()
+    return new Ingredient(this.name, this.amount).isValid();
   }
 
   isEmpty = () => (
     !this.ingredient ||
     (
-      this.name === '' &&
-      this.amount === 0
+      this.name === EMPTY_NAME &&
+      this.amount === EMPTY_AMOUNT
     )
   )
 
   isEditing = () => {
-    return !!this.ingredient
+    return !!this.ingredient;
   }
 
   hasChanges = () => {
     if (!this.ingredient) {
-      return
+      return (
+        this.name !== EMPTY_NAME ||
+        this.amount !== EMPTY_AMOUNT
+      );
     }
 
     return (
       this.ingredient.name !== this.name ||
       this.ingredient.amount !== this.amount
-    )
+    );
   }
 
   clean = () => {
-    this.name = ''
-    this.amount = 0
-    this.ingredient && this.clear.emit(this.ingredient)
+    this.name = EMPTY_NAME;
+    this.amount = EMPTY_AMOUNT;
+    this.ingredient = undefined;
+    this.selectionService.select(undefined);
   }
 
   onAddClick = () => {
-    const ingredient = new Ingredient(this.name, this.amount);
-    this.add.emit(ingredient);
+    if (this.ingredient) {
+      return;
+    }
+
+    const ingredient = new Ingredient(this.name, this.amount)
+    this.shoppingService.merge(ingredient);
     this.clean();
   }
 
   onDeleteClick = () => {
     if (!this.ingredient) {
-      return
+      return;
     }
 
-    this.delete.emit(this.ingredient);
-    this.clean()
+    this.shoppingService.delete(this.ingredient);
+    this.clean();
   }
 
   onClearClick = () => {
-    this.clean()
+    this.clean();
   }
 
   onUpdateClick = () => {
     if (!this.ingredient) {
-      return
+      return;
     }
 
-    this.ingredient.name = this.name
-    this.ingredient.amount = this.amount
-    this.update.emit(this.ingredient)
+    this.ingredient.name = this.name;
+    this.ingredient.amount = this.amount;
+    this.shoppingService.update(this.ingredient);
     this.clean()
   }
 
   onAmountBlur = () => {
-    this.amount = this.amount || 0
+    this.amount = this.amount || 0;
   }
 }

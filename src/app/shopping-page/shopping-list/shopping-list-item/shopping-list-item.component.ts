@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Ingredient } from 'src/models/ingredient.model'
+import { SelectionService } from 'src/services/selection.service';
 
 @Component({
   selector: 'app-shopping-list-item',
@@ -8,5 +9,12 @@ import { Ingredient } from 'src/models/ingredient.model'
 })
 export class ShoppingListItemComponent {
   @Input()
-  ingredient: Ingredient | null = null;
+  ingredient: Ingredient | undefined = undefined;
+
+  constructor(private selectionService: SelectionService<Ingredient>) {
+  }
+
+  onIngredientClick = () => {
+    this.ingredient && this.selectionService.select(this.ingredient)
+  }
 }

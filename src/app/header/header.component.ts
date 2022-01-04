@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Page } from 'src/enums/Page';
+import { NavigationService } from 'src/services/navigation.service';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +8,12 @@ import { Page } from 'src/enums/Page';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Output()
-  navigation = new EventEmitter<Page>()
-
   Page = Page;
 
   collapsed = true;
 
-  navigate = (page: Page) => {
-    this.navigation.emit(page)
+  constructor(private navigationService: NavigationService) {
   }
+
+  navigate = this.navigationService.navigate
 }

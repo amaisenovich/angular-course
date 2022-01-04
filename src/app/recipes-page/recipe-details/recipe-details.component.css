@@ -4,3 +4,12 @@
   border-radius: 3px;
   font-weight: bold;
 }
+
+.list-group-item {
+  background-color: transparent;
+  border-color: #74a5ff;
+}
+
+.list-group-item:not(:last-child) {
+  margin-bottom: 5px;
+}
