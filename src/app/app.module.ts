@@ -19,7 +19,7 @@ import { RecipeListCommandsComponent } from 'src/app/components/recipes-page/rec
 import { RecipeDetailsCommandsComponent } from 'src/app/components/recipes-page/recipe-details/recipe-details-commands/recipe-details-commands.component';
 import { DropdownDirective } from 'src/app/directives/dropdown.directive';
 import { RecipeEditComponent } from './components/recipes-page/recipe-edit/recipe-edit.component';
-import { RecipeDetailsPlaceholderComponent } from './components/recipes-page/recipe-details-placeholder/recipe-details-placeholder.component';
+import { RecipePlaceholderComponent } from './components/recipes-page/recipe-placeholder/recipe-placeholder.component';
 import { EmptyComponent } from './components/empty/empty.component';
 
 @NgModule({
@@ -38,7 +38,7 @@ import { EmptyComponent } from './components/empty/empty.component';
     RecipeDetailsCommandsComponent,
     DropdownDirective,
     RecipeEditComponent,
-    RecipeDetailsPlaceholderComponent,
+    RecipePlaceholderComponent,
     EmptyComponent
   ],
   imports: [

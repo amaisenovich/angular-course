@@ -9,7 +9,7 @@ import { RecipeEditComponent } from 'src/app/components/recipes-page/recipe-edit
 import { RecipeResolver } from 'src/app/components/recipes-page/recipe-resolver.service';
 import { IngredientResolver } from 'src/app/components/shopping-page/ingredient-resolver.service';
 import { RouterData } from 'src/app/enums/RouterData';
-import { RecipeDetailsPlaceholderComponent } from 'src/app/components/recipes-page/recipe-details-placeholder/recipe-details-placeholder.component';
+import { RecipePlaceholderComponent } from 'src/app/components/recipes-page/recipe-placeholder/recipe-placeholder.component';
 import { ShoppingListEditComponent } from './components/shopping-page/shopping-list-edit/shopping-list-edit.component';
 
 const routes: Routes = [{
@@ -17,7 +17,10 @@ const routes: Routes = [{
   component: RecipesPageComponent,
   children: [{
     path: Page.ROOT,
-    component: RecipeDetailsPlaceholderComponent,
+    component: RecipePlaceholderComponent,
+  }, {
+    path: Page.NEW,
+    component: RecipeEditComponent
   }, {
     path: `:${RouterParam.RECIPE_ID}`,
     component: RecipeDetailsComponent,
@@ -42,11 +45,11 @@ const routes: Routes = [{
     }
   },
   {
-    path: '',
+    path: Page.ROOT,
     component: ShoppingListEditComponent
   }]
 }, {
-  path: "**",
+  path: Page.ANY,
   redirectTo: Page.RECIPES
 }];
 

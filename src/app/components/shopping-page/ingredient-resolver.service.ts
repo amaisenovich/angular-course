@@ -10,7 +10,6 @@ import { ShoppingService } from "src/app/services/shopping.service";
 })
 export class IngredientResolver implements Resolve<Ingredient> {
   constructor(private shoppingService: ShoppingService) {
-
   }
 
   resolve(activeRoute: ActivatedRouteSnapshot): Ingredient {

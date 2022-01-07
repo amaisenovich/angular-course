@@ -28,13 +28,7 @@ export class RecipeDetailsCommandsComponent implements OnInit {
     })
   }
 
-  onShopClick = (e: MouseEvent) => {
-    if (!this.recipe) {
-      e.preventDefault()
-      e.stopPropagation()
-      return
-    }
-
-    this.shoppingService.merge(...this.recipe.ingredients)
+  onShopClick = () => {
+    this.recipe && this.shoppingService.merge(...this.recipe.ingredients)
   }
 }

@@ -3,5 +3,7 @@ export enum Page {
   RECIPES = 'recipes',
   SHOPPING = 'shopping',
   EDIT = 'edit',
-  DETAILS = 'details'
+  NEW = 'new',
+  DETAILS = 'details',
+  ANY = '**'
 }
