@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
-import { RouterData } from 'src/app/common/enums/RouterData';
+import { RouterData } from '../../enums/RouterData';
 import { Recipe } from '../../models/recipe.model'
 
 @Component({
@@ -18,9 +18,7 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ngOnInit')
     this.route.data.subscribe((data: Data) => {
-      console.log('listener')
       this.recipe = data[RouterData.RECIPE]
     })
   }

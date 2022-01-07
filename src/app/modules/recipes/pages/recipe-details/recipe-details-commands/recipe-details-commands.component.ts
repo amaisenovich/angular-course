@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Data } from '@angular/router';
 import { Page } from 'src/app/common/enums/Page';
-import { RouterData } from 'src/app/common/enums/RouterData';
 import { ShoppingService } from 'src/app/common/services/shopping.service';
 import { Recipe } from '../../../models/recipe.model';
+import { RouterData } from '../../../enums/RouterData';
 
 @Component({
   selector: 'app-recipe-details-commands',

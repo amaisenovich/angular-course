@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Page } from 'src/app/common/enums/Page';
-import { RouterData } from 'src/app/common/enums/RouterData';
 import { Ingredient } from 'src/app/common/models/ingredient.model';
 import { ShoppingService } from 'src/app/common/services/shopping.service';
+import { RouterData } from '../../enums/RouterData';
 
 const EMPTY_NAME = ''
 
@@ -29,10 +29,7 @@ export class ShoppingListEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.route.snapshot.params)
-    console.log('ngOnInit')
     this.route.data.subscribe((data) => {
-      console.log('listener')
       this.setIngredient(data[RouterData.INGREDIENT])
     })
   }

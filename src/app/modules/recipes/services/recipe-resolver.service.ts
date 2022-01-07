@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Resolve, ActivatedRouteSnapshot } from "@angular/router";
-import { RouterParam } from "src/app/common/enums/RouterParam";
 import { ProvidedIn } from "src/app/common/enums/ProvidedIn";
 import { RecipeService } from "../services/recipe.service";
 import { Recipe } from "../models/recipe.model";
+import { RouterParam } from "../enums/RouterParam";
 
 @Injectable({
   providedIn: ProvidedIn.ROOT
