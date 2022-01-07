@@ -1,5 +1,5 @@
 import { EventEmitter } from "@angular/core"
-import { IEntity } from "src/interfaces/IEntity"
+import { IEntity } from "src/app/interfaces/IEntity"
 
 export class SelectionService<T extends IEntity<T>> {
   private selected: T | undefined = undefined

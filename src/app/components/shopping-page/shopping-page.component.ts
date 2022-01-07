@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SelectionService } from 'src/services/selection.service';
+import { SelectionService } from 'src/app/services/selection.service';
 
 @Component({
   selector: 'app-shopping-page',

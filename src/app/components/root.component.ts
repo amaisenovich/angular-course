@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Page } from 'src/enums/Page';
-import { NavigationService } from 'src/services/navigation.service';
+import { Page } from 'src/app/enums/Page';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './root.component.html',
+  styleUrls: ['./root.component.css']
 })
-export class AppComponent implements OnInit {
+export class RootComponent implements OnInit {
   Page = Page
 
   currentPage: Page | undefined = undefined

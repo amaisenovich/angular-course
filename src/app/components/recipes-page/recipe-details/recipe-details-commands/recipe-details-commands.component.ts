@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Page } from 'src/enums/Page';
-import { Recipe } from 'src/models/recipe.model';
-import { ShoppingService } from 'src/services/shopping.service';
-import { NavigationService } from 'src/services/navigation.service';
-import { SelectionService } from 'src/services/selection.service';
+import { Page } from 'src/app/enums/Page';
+import { Recipe } from 'src/app/models/recipe.model';
+import { ShoppingService } from 'src/app/services/shopping.service';
+import { NavigationService } from 'src/app/services/navigation.service';
+import { SelectionService } from 'src/app/services/selection.service';
 
 @Component({
   selector: 'app-recipe-details-commands',

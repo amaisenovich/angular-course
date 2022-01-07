@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from "@angular/core";
-import { ProvidedIn } from "src/enums/ProvidedIn";
-import { Page } from 'src/enums/Page'
+import { ProvidedIn } from "src/app/enums/ProvidedIn";
+import { Page } from 'src/app/enums/Page'
 
 @Injectable({
   providedIn: ProvidedIn.ROOT

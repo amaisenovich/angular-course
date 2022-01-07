@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Ingredient } from 'src/models/ingredient.model';
-import { SelectionService } from 'src/services/selection.service';
-import { ShoppingService } from 'src/services/shopping.service';
+import { Ingredient } from 'src/app/models/ingredient.model';
+import { SelectionService } from 'src/app/services/selection.service';
+import { ShoppingService } from 'src/app/services/shopping.service';
 
 const EMPTY_NAME = ''
 

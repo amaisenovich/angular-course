@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Ingredient } from 'src/models/ingredient.model'
-import { SelectionService } from 'src/services/selection.service';
+import { Ingredient } from 'src/app/models/ingredient.model'
+import { SelectionService } from 'src/app/services/selection.service';
 
 @Component({
   selector: 'app-shopping-list-item',

@@ -1,6 +1,6 @@
-import { IEntity } from 'src/interfaces/IEntity';
+import { IEntity } from 'src/app/interfaces/IEntity';
 import { Ingredient } from './ingredient.model'
-import { getId } from 'src/utils/getId';
+import { getId } from 'src/app/utils/getId';
 
 export class Recipe implements IEntity<Recipe> {
   #id: string = getId().toString()

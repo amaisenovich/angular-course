@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Page } from 'src/enums/Page';
-import { NavigationService } from 'src/services/navigation.service';
+import { Page } from 'src/app/enums/Page';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-header',

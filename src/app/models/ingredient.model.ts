@@ -1,4 +1,4 @@
-import { IEntity } from 'src/interfaces/IEntity';
+import { IEntity } from 'src/app/interfaces/IEntity';
 
 export class Ingredient implements IEntity<Ingredient> {
   #id: string;
