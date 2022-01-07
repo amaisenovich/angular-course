@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Page } from 'src/app/enums/Page';
-import { RecipesPageComponent } from 'src/app/components/recipes-page/recipes-page.component';
-import { ShoppingPageComponent } from 'src/app/components/shopping-page/shopping-page.component';
-import { RouterParam } from 'src/app/enums/RouterParam';
-import { RecipeDetailsComponent } from 'src/app/components/recipes-page/recipe-details/recipe-details.component';
-import { RecipeEditComponent } from 'src/app/components/recipes-page/recipe-edit/recipe-edit.component';
-import { RecipeResolver } from 'src/app/components/recipes-page/recipe-resolver.service';
-import { IngredientResolver } from 'src/app/components/shopping-page/ingredient-resolver.service';
-import { RouterData } from 'src/app/enums/RouterData';
-import { RecipePlaceholderComponent } from 'src/app/components/recipes-page/recipe-placeholder/recipe-placeholder.component';
-import { ShoppingListEditComponent } from './components/shopping-page/shopping-list-edit/shopping-list-edit.component';
+import { Page } from 'src/app/common/enums/Page';
+import { RouterParam } from 'src/app/common/enums/RouterParam';
+import { RouterData } from 'src/app/common/enums/RouterData';
+
+import { RecipesPageComponent } from 'src/app/modules/recipes/pages/recipes-page.component';
+import { RecipePlaceholderComponent } from 'src/app/modules/recipes/pages/recipe-placeholder/recipe-placeholder.component';
+import { RecipeDetailsComponent } from 'src/app/modules/recipes/pages/recipe-details/recipe-details.component';
+import { RecipeEditComponent } from 'src/app/modules/recipes/pages/recipe-edit/recipe-edit.component';
+import { RecipeResolver } from 'src/app/modules/recipes/services/recipe-resolver.service';
+
+import { ShoppingPageComponent } from 'src/app/modules/shopping/shopping-page/shopping-page.component';
+import { ShoppingListEditComponent } from 'src/app/modules/shopping/shopping-page/shopping-list-edit/shopping-list-edit.component';
+import { IngredientResolver } from 'src/app/modules/shopping/services/ingredient-resolver.service';
 
 const routes: Routes = [{
   path: Page.RECIPES,
