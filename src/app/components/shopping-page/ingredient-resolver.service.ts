@@ -14,7 +14,6 @@ export class IngredientResolver implements Resolve<Ingredient> {
   }
 
   resolve(activeRoute: ActivatedRouteSnapshot): Ingredient {
-    debugger
     const ingredientId = activeRoute.params[RouterParam.INGREDIENT_ID]
     const [ingredient] = this.shoppingService.get(i => i.id === ingredientId)
     return ingredient

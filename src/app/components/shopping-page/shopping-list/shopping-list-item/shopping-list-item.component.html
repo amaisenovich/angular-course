@@ -1,5 +1,3 @@
-<a class="list-group-item" style="cursor: pointer" [routerLink]="[ingredient?.id]">
-  <span>
-    {{ ingredient?.name }} - {{ ingredient?.amount }}
-  </span>
+<a class="list-group-item" style="cursor: pointer" [routerLink]="[ingredient?.id]" routerLinkActive="active">
+  {{ ingredient?.name }} - {{ ingredient?.amount }}
 </a>

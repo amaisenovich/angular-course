@@ -25,19 +25,18 @@
 
 .list-group-item:focus,
 .list-group-item:hover,
-.list-group-item.active,
-.list-group-item:focus, 
-.list-group-item:hover,
-.list-group-item.active,
-p.list-group-item-text:focus,
-p.list-group-item-text:active, 
-p.list-group-item-text:hover,
-.list-group-item.active .list-group-item-text, 
-.list-group-item.active:focus .list-group-item-text, 
-.list-group-item.active:hover .list-group-item-text {
+.list-group-item.active {
   background-color: #ffc9c9;
   color: #555;
   border-color: #ffc9c9;
+}
+
+.list-group-item:focus *,
+.list-group-item:hover *,
+.list-group-item.active * {
+  background-color: transparent;
+  color: inherit;
+  border-color: inherit;
 }
 
 
