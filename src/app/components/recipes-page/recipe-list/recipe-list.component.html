@@ -11,5 +11,10 @@
         <app-recipe-list-item [recipe]="recipe"></app-recipe-list-item>
       </li>
     </ul>
+    <div class='list-placeholder' *ngIf="!recipes.length">
+      <app-empty>
+        Looks empty here :( Start by adding a new recipe!
+      </app-empty>
+    </div>
   </div>
 </div>
