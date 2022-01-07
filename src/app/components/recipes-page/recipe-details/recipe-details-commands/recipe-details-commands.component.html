@@ -5,9 +5,21 @@
   </button>
   <ul class="dropdown-menu">
     <li>
-      <a href="#" (click)="onShopClick()">Shop Ingredients</a>
-      <a href="#">Edit Recipe</a>
-      <a href="#">Delete Recipe</a>
+      <a [routerLink]="'/' + Page.SHOPPING">
+        <span (click)="onShopClick($event)">
+          Shop Ingredients
+        </span>
+      </a>
+      <a href="#">
+        <span>
+          Edit Recipe
+        </span>
+      </a>
+      <a href="#">
+        <span>
+          Delete Recipe
+        </span>
+      </a>
     </li>
   </ul>
 </div>

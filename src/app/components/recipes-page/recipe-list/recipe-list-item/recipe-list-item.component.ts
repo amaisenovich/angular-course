@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe.model';
-import { SelectionService } from 'src/app/services/selection.service';
+import { Page } from 'src/app/enums/Page';
 
 @Component({
   selector: 'app-recipe-list-item',
@@ -8,13 +8,8 @@ import { SelectionService } from 'src/app/services/selection.service';
   styleUrls: ['./recipe-list-item.component.css']
 })
 export class RecipeListItemComponent {
+  Page = Page
+
   @Input()
   recipe: Recipe | undefined = undefined
-
-  constructor(private selectionService: SelectionService<Recipe>) {
-  }
-
-  onRecipeClick = () => {
-    this.recipe && this.selectionService.select(this.recipe)
-  }
 }

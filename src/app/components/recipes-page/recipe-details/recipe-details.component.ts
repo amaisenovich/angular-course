@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
+import { RouterData } from 'src/app/enums/RouterData';
 import { Recipe } from 'src/app/models/recipe.model'
-import { SelectionService } from 'src/app/services/selection.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -12,14 +13,15 @@ export class RecipeDetailsComponent implements OnInit {
   recipe: Recipe | undefined = undefined;
 
   constructor(
-    private selectionService: SelectionService<Recipe>
+    private route: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
-    this.recipe = this.selectionService.get()
-    this.selectionService.onSelected.subscribe((recipe: Recipe) => {
-      this.recipe = recipe
+    console.log('ngOnInit')
+    this.route.data.subscribe((data: Data) => {
+      console.log('listener')
+      this.recipe = data[RouterData.RECIPE]
     })
   }
 }

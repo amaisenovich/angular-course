@@ -34,7 +34,7 @@ export class RecipeService {
 
   onRecipiesUpdated = new EventEmitter<Recipe[]>()
 
-  get = () => {
-    return this.recipies.map(r => r.copy())
+  get = (prediacate: (r: Recipe) => boolean = () => true): Recipe[] => {
+    return this.recipies.filter(prediacate).map(r => r.copy())
   }
 }

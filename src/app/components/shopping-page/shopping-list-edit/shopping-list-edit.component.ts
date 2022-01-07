@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Page } from 'src/app/enums/Page';
+import { RouterData } from 'src/app/enums/RouterData';
 import { Ingredient } from 'src/app/models/ingredient.model';
-import { SelectionService } from 'src/app/services/selection.service';
 import { ShoppingService } from 'src/app/services/shopping.service';
 
 const EMPTY_NAME = ''
@@ -8,9 +10,9 @@ const EMPTY_NAME = ''
 const EMPTY_AMOUNT = 0
 
 @Component({
-  selector: 'app-shopping-details',
-  templateUrl: './shopping-details.component.html',
-  styleUrls: ['./shopping-details.component.css']
+  selector: 'app-shopping-list-edit',
+  templateUrl: './shopping-list-edit.component.html',
+  styleUrls: ['./shopping-list-edit.component.css']
 })
 export class ShoppingListEditComponent implements OnInit {
   ingredient: Ingredient | undefined = undefined;
@@ -21,13 +23,18 @@ export class ShoppingListEditComponent implements OnInit {
 
   constructor(
     private shoppingService: ShoppingService,
-    private selectionService: SelectionService<Ingredient>
+    private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
-    this.ingredient = this.selectionService.get()
-    this.selectionService.onSelected.subscribe(this.onIngredientSelected)
+    console.log(this.route.snapshot.params)
+    console.log('ngOnInit')
+    this.route.data.subscribe((data) => {
+      console.log('listener')
+      this.setIngredient(data[RouterData.INGREDIENT])
+    })
   }
 
   setIngredient = (ingredient: Ingredient | undefined) => {
@@ -49,8 +56,6 @@ export class ShoppingListEditComponent implements OnInit {
     if (confirm) {
       return this.setIngredient(ingredient)
     }
-
-    this.ingredient && this.selectionService.select(this.ingredient)
   }
 
   isValid = () => {
@@ -87,7 +92,7 @@ export class ShoppingListEditComponent implements OnInit {
     this.name = EMPTY_NAME;
     this.amount = EMPTY_AMOUNT;
     this.ingredient = undefined;
-    this.selectionService.select(undefined);
+    this.router.navigate([Page.SHOPPING])
   }
 
   onAddClick = () => {

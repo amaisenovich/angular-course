@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe.model';
 import { RecipeService } from 'src/app/services/recipe.service';
-import { SelectionService } from 'src/app/services/selection.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -12,16 +11,11 @@ export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = []
 
   constructor(
-    private recipeSerivce: RecipeService,
-    private selectionService: SelectionService<Recipe>
-    ) {
+    private recipeSerivce: RecipeService
+  ) {
   }
 
   ngOnInit() {
     this.recipes = this.recipeSerivce.get()
-    this.selectionService.select(this.recipes[0])
-    this.recipeSerivce.onRecipiesUpdated.subscribe((recipies: Recipe[]) => {
-      this.recipes = recipies
-    })
   }
 }

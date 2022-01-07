@@ -1,26 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Page } from 'src/app/enums/Page';
 import { Recipe } from 'src/app/models/recipe.model';
 import { ShoppingService } from 'src/app/services/shopping.service';
-import { SelectionService } from 'src/app/services/selection.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, Data } from '@angular/router';
+import { RouterData } from 'src/app/enums/RouterData';
 
 @Component({
   selector: 'app-recipe-details-commands',
   templateUrl: './recipe-details-commands.component.html',
   styleUrls: ['./recipe-details-commands.component.css']
 })
-export class RecipeDetailsCommandsComponent {
+export class RecipeDetailsCommandsComponent implements OnInit {
+  Page = Page
+
+  recipe: Recipe | undefined = undefined
+
   constructor(
-    private selectionService: SelectionService<Recipe>,
     private shoppingService: ShoppingService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
   }
 
-  onShopClick = () => {
-    const recipe = this.selectionService.get()
-    recipe && this.shoppingService.merge(...recipe.ingredients)
-    this.router.navigate([Page.SHOPPING])
+  ngOnInit() {
+    this.route.data.subscribe((data: Data) => {
+      this.recipe = data[RouterData.RECIPE]
+    })
+  }
+
+  onShopClick = (e: MouseEvent) => {
+    if (!this.recipe) {
+      e.preventDefault()
+      e.stopPropagation()
+      return
+    }
+
+    this.shoppingService.merge(...this.recipe.ingredients)
   }
 }

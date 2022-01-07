@@ -5,15 +5,15 @@
         <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
           Menu <span class="caret"></span>
         </button>
-        <a routerLink="/" class="navbar-brand">Recipe Book</a>
+        <a routerLink="/" class="navbar-brand" [routerLink]="'/' + Page.RECIPES">Recipe Book</a>
       </div>
 
       <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
         <ul class="nav navbar-nav">
-          <li>
+          <li routerLinkActive="active">
             <a [routerLink]="'/' + Page.RECIPES">Recipes</a>
           </li>
-          <li>
+          <li routerLinkActive="active">
             <a [routerLink]="'/' + Page.SHOPPING">Shopping List</a>
           </li>
         </ul>

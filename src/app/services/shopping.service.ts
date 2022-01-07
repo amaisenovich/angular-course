@@ -10,8 +10,8 @@ export class ShoppingService {
 
   onIngredientsUpdated = new EventEmitter<Ingredient[]>();
 
-  get = () => {
-    return this.ingredients.map(i => i.copy())
+  get = (predicate: (i: Ingredient) => boolean = () => true) => {
+    return this.ingredients.filter(predicate).map(i => i.copy())
   }
 
   merge = (...ingredients: Ingredient[]) => {

@@ -1,1 +1,5 @@
-<a class="list-group-item" style="cursor: pointer" (click)="onIngredientClick()">{{ ingredient?.name }} - {{ ingredient?.amount }}</a>
+<a class="list-group-item" style="cursor: pointer" [routerLink]="[ingredient?.id]">
+  <span>
+    {{ ingredient?.name }} - {{ ingredient?.amount }}
+  </span>
+</a>

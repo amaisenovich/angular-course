@@ -1,6 +1,6 @@
 .navbar-default {
   background-color: #ffa502;
-  border-color: #ff8902;
+  border-color: #c46800;
   color: #333;
   font-weight: bold;
   border-radius: 3px;
@@ -37,6 +37,13 @@
 .navbar-default .navbar-nav > .open > a:focus,
 .navbar-default .navbar-nav > .open > a:hover {
   background-color: #c46800;
+}
+
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:focus, 
+.navbar-default .navbar-nav > .active > a:hover {
+  background-color: #c46800;
+  color: white;
 }
 
 header .navbar-default .navbar-toggle {
