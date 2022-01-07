@@ -1,4 +1,4 @@
 export enum Page {
-  RECIPES = 'RECIPES',
-  SHOPPING = 'SHOPPING'
+  RECIPES = 'recipes',
+  SHOPPING = 'shopping'
 }

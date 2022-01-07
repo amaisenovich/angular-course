@@ -11,10 +11,10 @@
       <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
         <ul class="nav navbar-nav">
           <li>
-            <a href="#" (click)="navigate(Page.RECIPES)">Recipes</a>
+            <a [routerLink]="'/' + Page.RECIPES">Recipes</a>
           </li>
           <li>
-            <a href="#" (click)="navigate(Page.SHOPPING)">Shopping List</a>
+            <a [routerLink]="'/' + Page.SHOPPING">Shopping List</a>
           </li>
         </ul>
 
