@@ -1,4 +1,5 @@
-import { Injectable, EventEmitter } from "@angular/core";
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 import { ProvidedIn } from "src/app/common/enums/ProvidedIn";
 import { Ingredient } from "src/app/common/models/ingredient.model";
 import { Recipe } from "../models/recipe.model";
@@ -32,7 +33,7 @@ export class RecipeService {
     )
   ]
 
-  onRecipiesUpdated = new EventEmitter<Recipe[]>()
+  onRecipiesUpdated = new Subject<Recipe[]>()
 
   get = (prediacate: (r: Recipe) => boolean = () => true): Recipe[] => {
     return this.recipies.filter(prediacate).map(r => r.copy())

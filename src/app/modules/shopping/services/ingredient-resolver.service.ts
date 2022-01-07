@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable} from "@angular/core";
 import { Resolve, ActivatedRouteSnapshot } from "@angular/router";
 import { ProvidedIn } from "src/app/common/enums/ProvidedIn";
 import { Ingredient } from "src/app/common/models/ingredient.model";

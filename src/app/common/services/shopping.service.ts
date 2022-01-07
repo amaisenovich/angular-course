@@ -1,4 +1,5 @@
-import { Injectable, EventEmitter } from "@angular/core";
+import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 import { ProvidedIn } from "src/app/common/enums/ProvidedIn";
 import { Ingredient } from "src/app/common/models/ingredient.model";
 
@@ -8,7 +9,7 @@ import { Ingredient } from "src/app/common/models/ingredient.model";
 export class ShoppingService {
   private ingredients: Ingredient[] = [];
 
-  onIngredientsUpdated = new EventEmitter<Ingredient[]>();
+  onIngredientsUpdated = new Subject<Ingredient[]>();
 
   get = (predicate: (i: Ingredient) => boolean = () => true) => {
     return this.ingredients.filter(predicate).map(i => i.copy())
@@ -28,7 +29,7 @@ export class ShoppingService {
       ]
     })
 
-    this.onIngredientsUpdated.emit(this.get());
+    this.onIngredientsUpdated.next(this.get());
   }
 
 
@@ -38,7 +39,7 @@ export class ShoppingService {
       this.ingredients.splice(index, 1, updated.copy());
     });
 
-    this.onIngredientsUpdated.emit(this.get());
+    this.onIngredientsUpdated.next(this.get());
   }
 
   delete = (...ingredients: Ingredient[]) => {
@@ -47,6 +48,6 @@ export class ShoppingService {
       this.ingredients.splice(index, 1);
     });
 
-    this.onIngredientsUpdated.emit(this.get());
+    this.onIngredientsUpdated.next(this.get());
   }
 }
