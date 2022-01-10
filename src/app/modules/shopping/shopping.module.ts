@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from 'src/app/common/common.module';
 import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
 import { ShoppingListComponent } from './shopping-page/shopping-list/shopping-list.component';
@@ -17,7 +17,7 @@ import { ShoppingRoutingModule } from './shopping-routing.module'
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     ShoppingRoutingModule
   ],

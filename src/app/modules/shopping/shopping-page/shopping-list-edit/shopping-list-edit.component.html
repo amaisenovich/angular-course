@@ -1,23 +1,71 @@
 <div class="row">
   <div class="col-xs-12">
-    <form class="shopping-list-edit-form" name="shopping-details-form">
+    <form
+      class="shopping-list-edit-form"
+      name="shopping-details-form"
+      [formGroup]="formGroup"
+    >
       <div class="row">
         <div class="col-sm-10 form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" class="form-control" name="name" placeholder="Enter new ingredient name" [(ngModel)]="name">
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            name="name"
+            placeholder="Enter new ingredient name"
+            [formControl]="nameControl"
+          >
         </div>
         <div class="col-sm-2 form-group">
           <label for="amount">Amount</label>
-          <input type="number" id="amount" class="form-control" name="amount" [(ngModel)]="amount" (blur)="onAmountBlur()">
+          <input
+            type="number"
+            id="amount"
+            class="form-control"
+            name="amount"
+            [formControl]="amountControl"
+            (blur)="onAmountBlur()"
+          >
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
           <div class="shopping-list-edit-controls">
-            <button class="btn btn-success" *ngIf="!isEditing()" type="button" [disabled]="!isValid()" (click)="onAddClick()">Add</button>
-            <button class="btn btn-success" *ngIf="isEditing()" type="button" [disabled]="!isValid() || !hasChanges()" (click)="onUpdateClick()">Update</button>
-            <button class="btn btn-danger" type="button" [disabled]="!isEditing()" (click)="onDeleteClick()" >Delete</button>
-            <button class="btn btn-primary" type="button" [disabled]="isEmpty()" (click)="onClearClick()">Clear</button>
+            <button
+              class="btn btn-success"
+              *ngIf="!editing"
+              type="button"
+              [disabled]="!valid"
+              (click)="onAddClick()"
+            >
+              Add
+            </button>
+            <button
+              class="btn btn-success"
+              *ngIf="editing"
+              type="button"
+              [disabled]="!valid || !changed"
+              (click)="onUpdateClick()"
+            >
+              Update
+            </button>
+            <button
+              class="btn btn-danger"
+              type="button"
+              [disabled]="!editing"
+              (click)="onDeleteClick()"
+            >
+              Delete
+            </button>
+            <button
+              class="btn btn-primary"
+              type="button"
+              [disabled]="empty"
+              (click)="onClearClick()"
+            >
+              Clear
+            </button>
           </div>
         </div>
       </div>

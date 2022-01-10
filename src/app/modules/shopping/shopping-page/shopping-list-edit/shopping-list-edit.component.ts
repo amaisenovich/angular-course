@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Page } from 'src/app/common/enums/Page';
 import { Ingredient } from 'src/app/common/models/ingredient.model';
@@ -9,69 +10,73 @@ const EMPTY_NAME = ''
 
 const EMPTY_AMOUNT = 0
 
+enum ControlName {
+  NAME = 'name',
+  AMOUNT = 'amount'
+}
+
 @Component({
   selector: 'app-shopping-list-edit',
   templateUrl: './shopping-list-edit.component.html',
   styleUrls: ['./shopping-list-edit.component.css']
 })
 export class ShoppingListEditComponent implements OnInit {
-  ingredient: Ingredient | undefined = undefined;
+  #ingredient: Ingredient | undefined = undefined;
 
-  name: string = EMPTY_NAME
-
-  amount: number = EMPTY_AMOUNT;
-
-  constructor(
-    private shoppingService: ShoppingService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
+  set ingredient(ingredient: Ingredient | undefined) {
+    this.#ingredient = ingredient;
+    this.name = ingredient ? ingredient.name : EMPTY_NAME;
+    this.amount = ingredient ? ingredient.amount : EMPTY_AMOUNT;
   }
 
-  ngOnInit() {
-    this.route.data.subscribe((data) => {
-      this.setIngredient(data[RouterData.INGREDIENT])
-    })
+  get ingredient() {
+    return this.#ingredient
   }
 
-  setIngredient = (ingredient: Ingredient | undefined) => {
-    this.ingredient = ingredient
-    this.name = ingredient ? ingredient.name : EMPTY_NAME
-    this.amount = ingredient ? ingredient.amount : EMPTY_AMOUNT
+  nameControl = new FormControl(EMPTY_NAME, Validators.required);
+
+  get name() {
+    return this.nameControl.value
   }
 
-  onIngredientSelected = (ingredient: Ingredient | undefined) => {
-    if (this.ingredient?.id === ingredient?.id) {
-      return
-    }
-
-    if (!this.hasChanges()) {
-      return this.setIngredient(ingredient)
-    }
-
-    const confirm = window.confirm('Do you want to undo your changes?')
-    if (confirm) {
-      return this.setIngredient(ingredient)
-    }
+  set name(value: string) {
+    this.nameControl.setValue(value)
   }
 
-  isValid = () => {
-    return new Ingredient(this.name, this.amount).isValid();
+  amountControl = new FormControl(EMPTY_AMOUNT, Validators.min(1));
+
+  get amount() {
+    return this.amountControl.value
   }
 
-  isEmpty = () => (
-    !this.ingredient ||
-    (
-      this.name === EMPTY_NAME &&
-      this.amount === EMPTY_AMOUNT
+  set amount(value: number) {
+    this.amountControl.setValue(value)
+  }
+
+  formGroup = new FormGroup({
+    [ControlName.NAME]: this.nameControl,
+    [ControlName.AMOUNT]: this.amountControl
+  });
+
+  get valid() {
+    return this.formGroup.valid
+  }
+
+  get empty() {
+    return (
+      !this.ingredient
+      || (
+        this.name === EMPTY_NAME &&
+        this.amount === EMPTY_AMOUNT
+      )
     )
-  )
+  }
 
-  isEditing = () => {
+  get editing() {
     return !!this.ingredient;
   }
 
-  hasChanges = () => {
+  get changed() {
     if (!this.ingredient) {
       return (
         this.name !== EMPTY_NAME ||
@@ -85,10 +90,40 @@ export class ShoppingListEditComponent implements OnInit {
     );
   }
 
+  constructor(
+    private shoppingService: ShoppingService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+  }
+
+  ngOnInit() {
+    this.route.data.subscribe((data) => {
+      this.ingredient = data[RouterData.INGREDIENT];
+    });
+  }
+
+  onIngredientSelected = (ingredient: Ingredient | undefined) => {
+    if (this.ingredient?.id === ingredient?.id) {
+      return
+    }
+
+    if (!this.changed) {
+      this.ingredient = ingredient
+      return
+    }
+
+    const confirm = window.confirm('Do you want to undo your changes?')
+    if (confirm) {
+      this.ingredient = ingredient
+      return
+    }
+  }
+
   clean = () => {
+    this.ingredient = undefined;
     this.name = EMPTY_NAME;
     this.amount = EMPTY_AMOUNT;
-    this.ingredient = undefined;
     this.router.navigate([Page.SHOPPING])
   }
 
