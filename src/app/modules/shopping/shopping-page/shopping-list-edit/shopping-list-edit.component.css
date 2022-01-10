@@ -1,9 +1,25 @@
-.shopping-list-edit-form {
+form {
   padding: 10px 15px;
   background-color: #acc5b4;
   border-radius: 3px;
 }
 
-.shopping-list-edit-controls button:not(:last-child) {
+button:not(:last-child) {
   margin-right: 8px;
+}
+
+.label {
+  margin-right: 5px;
+}
+
+.ng-invalid.ng-touched:not(:focus) {
+  border-color: #d9534f;
+  outline: 0;
+}
+
+.errors {
+  display: flex;
+  height: 34px;
+  align-items: center;
+  justify-content: flex-end;
 }

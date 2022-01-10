@@ -6,6 +6,7 @@ import { RouterData } from './enums/RouterData';
 import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
 import { ShoppingListEditComponent } from './shopping-page/shopping-list-edit/shopping-list-edit.component';
 import { IngredientResolver } from './services/ingredient-resolver.service';
+import { PendingChangesGuard } from 'src/app/common/router/pedning-changes.guard';
 
 const routes: Routes = [{
   path: Page.SHOPPING,
@@ -15,7 +16,10 @@ const routes: Routes = [{
     component: ShoppingListEditComponent,
     resolve: {
       [RouterData.INGREDIENT]: IngredientResolver
-    }
+    },
+    canDeactivate: [
+      PendingChangesGuard
+    ]
   },
   {
     path: Page.ROOT,

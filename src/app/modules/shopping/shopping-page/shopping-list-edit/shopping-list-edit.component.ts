@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Page } from 'src/app/common/enums/Page';
 import { Ingredient } from 'src/app/common/models/ingredient.model';
 import { ShoppingService } from 'src/app/common/services/shopping.service';
+import { CanDeactivate } from 'src/app/common/router/pedning-changes.guard';
 import { RouterData } from '../../enums/RouterData';
 
 const EMPTY_NAME = ''
@@ -20,7 +21,7 @@ enum ControlName {
   templateUrl: './shopping-list-edit.component.html',
   styleUrls: ['./shopping-list-edit.component.css']
 })
-export class ShoppingListEditComponent implements OnInit {
+export class ShoppingListEditComponent implements OnInit, CanDeactivate {
   #ingredient: Ingredient | undefined = undefined;
 
   set ingredient(ingredient: Ingredient | undefined) {
@@ -40,7 +41,7 @@ export class ShoppingListEditComponent implements OnInit {
   }
 
   set name(value: string) {
-    this.nameControl.setValue(value)
+    this.nameControl.reset(value)
   }
 
   amountControl = new FormControl(EMPTY_AMOUNT, Validators.min(1));
@@ -50,16 +51,16 @@ export class ShoppingListEditComponent implements OnInit {
   }
 
   set amount(value: number) {
-    this.amountControl.setValue(value)
+    this.amountControl.reset(value)
   }
 
-  formGroup = new FormGroup({
+  ingredientGroup = new FormGroup({
     [ControlName.NAME]: this.nameControl,
     [ControlName.AMOUNT]: this.amountControl
   });
 
   get valid() {
-    return this.formGroup.valid
+    return this.ingredientGroup.valid
   }
 
   get empty() {
@@ -90,6 +91,32 @@ export class ShoppingListEditComponent implements OnInit {
     );
   }
 
+  get errors() {
+    const errors: string[] = []
+    if (
+      !this.nameControl.valid &&
+      this.nameControl.touched &&
+      this.nameControl.errors &&
+      this.nameControl.errors[Validators.required.name]
+    ) {
+      errors.push('name cannot be empty')
+    }
+
+    const log = this.amountControl.touched
+
+    if (
+      !this.amountControl.valid &&
+      this.amountControl.touched &&
+      this.amountControl.errors &&
+      this.amountControl.errors[Validators.min.name]
+    ) {
+      errors.push('amount should be bigger than zero')
+    }
+
+    console.log(errors, this.nameControl.errors, this.amountControl.errors)
+    return errors
+  }
+
   constructor(
     private shoppingService: ShoppingService,
     private route: ActivatedRoute,
@@ -103,28 +130,19 @@ export class ShoppingListEditComponent implements OnInit {
     });
   }
 
-  onIngredientSelected = (ingredient: Ingredient | undefined) => {
-    if (this.ingredient?.id === ingredient?.id) {
-      return
-    }
-
+  canDeactivate = () => {
     if (!this.changed) {
-      this.ingredient = ingredient
-      return
+      return true;
     }
 
-    const confirm = window.confirm('Do you want to undo your changes?')
-    if (confirm) {
-      this.ingredient = ingredient
-      return
-    }
+    return window.confirm('Do you want to undo your changes?');
   }
 
   clean = () => {
     this.ingredient = undefined;
     this.name = EMPTY_NAME;
     this.amount = EMPTY_AMOUNT;
-    this.router.navigate([Page.SHOPPING])
+    this.router.navigate([Page.SHOPPING]);
   }
 
   onAddClick = () => {
@@ -158,10 +176,10 @@ export class ShoppingListEditComponent implements OnInit {
     this.ingredient.name = this.name;
     this.ingredient.amount = this.amount;
     this.shoppingService.update(this.ingredient);
-    this.clean()
+    this.clean();
   }
 
   onAmountBlur = () => {
-    this.amount = this.amount || 0;
+    !this.amount && this.amountControl.setValue(EMPTY_AMOUNT)
   }
 }

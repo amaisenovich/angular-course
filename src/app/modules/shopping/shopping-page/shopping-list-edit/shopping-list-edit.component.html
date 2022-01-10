@@ -1,11 +1,10 @@
 <div class="row">
   <div class="col-xs-12">
     <form
-      class="shopping-list-edit-form"
       name="shopping-details-form"
-      [formGroup]="formGroup"
+      [formGroup]="ingredientGroup"
     >
-      <div class="row">
+      <div class="row ">
         <div class="col-sm-10 form-group">
           <label for="name">Name</label>
           <input
@@ -29,46 +28,53 @@
           >
         </div>
       </div>
+
       <div class="row">
-        <div class="col-xs-12">
-          <div class="shopping-list-edit-controls">
-            <button
-              class="btn btn-success"
-              *ngIf="!editing"
-              type="button"
-              [disabled]="!valid"
-              (click)="onAddClick()"
-            >
-              Add
-            </button>
-            <button
-              class="btn btn-success"
-              *ngIf="editing"
-              type="button"
-              [disabled]="!valid || !changed"
-              (click)="onUpdateClick()"
-            >
-              Update
-            </button>
-            <button
-              class="btn btn-danger"
-              type="button"
-              [disabled]="!editing"
-              (click)="onDeleteClick()"
-            >
-              Delete
-            </button>
-            <button
-              class="btn btn-primary"
-              type="button"
-              [disabled]="empty"
-              (click)="onClearClick()"
-            >
-              Clear
-            </button>
-          </div>
+        <div class="col-sm-10">
+          <button
+            class="btn btn-success"
+            *ngIf="!editing"
+            type="button"
+            [disabled]="!valid"
+            (click)="onAddClick()"
+          >
+            Add
+          </button>
+          <button
+            class="btn btn-success"
+            *ngIf="editing"
+            type="button"
+            [disabled]="!valid || !changed"
+            (click)="onUpdateClick()"
+          >
+            Update
+          </button>
+          <button
+            class="btn btn-danger"
+            type="button"
+            [disabled]="!editing"
+            (click)="onDeleteClick()"
+          >
+            Delete
+          </button>
+          <button
+            class="btn btn-primary"
+            type="button"
+            [disabled]="empty && !errors.length"
+            (click)="onClearClick()"
+          >
+            Clear
+          </button>
+        </div>
+
+        <div class="col-sm-2 errors">
+          <span
+            class="label label-danger error"
+            *ngFor="let error of errors"
+          >
+            {{ error }}
+          </span>
         </div>
       </div>
     </form>
   </div>
-</div>
