@@ -1,11 +1,20 @@
-<div class="btn-group" appDropdown>
-  <button type="button" class="btn btn-primary dropdown-toggle">
+<div
+  class="btn-group"
+  appDropdown
+>
+  <button
+    type="button"
+    class="btn btn-primary dropdown-toggle"
+  >
     Manage Recipie
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
     <li>
-      <a [routerLink]="'/' + Page.SHOPPING" (click)="onShopClick()">
+      <a
+        [routerLink]="'/' + Page.SHOPPING"
+        (click)="onShopClick()"
+      >
         Shop Ingredients
       </a>
       <a [routerLink]="Page.EDIT">

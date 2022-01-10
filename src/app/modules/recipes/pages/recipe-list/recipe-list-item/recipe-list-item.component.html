@@ -1,13 +1,25 @@
-<a href="#" class="list-group-item clearfix" [routerLink]="[recipe?.id]" routerLinkActive="active">
+<a
+  href="#"
+  class="list-group-item clearfix"
+  [routerLink]="[recipe?.id]"
+  routerLinkActive="active"
+>
   <div class="pull-left recipe-list-item-description">
     <h4 class="list-group-item-heading">
       {{ recipe?.name }}
     </h4>
-    <p class="list-group-item-text" [title]="recipe?.description">
+    <p
+      class="list-group-item-text"
+      [title]="recipe?.description"
+    >
       {{ recipe?.description }}
     </p>
   </div>
   <span class="pull-right recipe-list-item-image">
-    <img [src]="recipe?.image" [alt]="recipe?.name" class="img-responsive">
+    <img
+      [src]="recipe?.image"
+      [alt]="recipe?.name"
+      class="img-responsive"
+    >
   </span>
 </a>
