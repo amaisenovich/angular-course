@@ -2,34 +2,64 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
-          Menu <span class="caret"></span>
+        <button
+          type="button"
+          class="navbar-toggle"
+          (click)="collapsed = !collapsed"
+        >
+          Menu
+          <span class="caret"></span>
         </button>
-        <a routerLink="/" class="navbar-brand" [routerLink]="'/' + Page.RECIPES">Recipe Book</a>
+        <a
+          routerLink="/"
+          class="navbar-brand"
+          [routerLink]="'/' + Page.RECIPES"
+        >
+          Recipe Book
+        </a>
       </div>
 
-      <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
+      <div
+        class="navbar-collapse"
+        [class.collapse]="collapsed"
+        (window:resize)="collapsed = true"
+      >
         <ul class="nav navbar-nav">
           <li routerLinkActive="active">
-            <a [routerLink]="'/' + Page.RECIPES">Recipes</a>
+            <a [routerLink]="'/' + Page.RECIPES">
+              Recipes
+            </a>
           </li>
           <li routerLinkActive="active">
-            <a [routerLink]="'/' + Page.SHOPPING">Shopping List</a>
+            <a [routerLink]="'/' + Page.SHOPPING">
+              Shopping List
+            </a>
           </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown" appDropdown>
-            <a href="#" class="dropdown-toggle" role="button">
+          <li
+            class="dropdown"
+            appDropdown
+          >
+            <a
+              href="#"
+              class="dropdown-toggle"
+              role="button"
+            >
               Menu
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="#">Save</a>
+                <a href="#">
+                  Save
+                </a>
               </li>
               <li>
-                <a href="#">Fetch</a>
+                <a href="#">
+                  Fetch
+                </a>
               </li>
             </ul>
           </li>

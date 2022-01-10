@@ -5,7 +5,10 @@
         <app-shopping-list-item [ingredient]="ingredient"></app-shopping-list-item>
       </li>
     </ul>
-    <div class='list-placeholder' *ngIf="!ingredients.length">
+    <div
+      class='list-placeholder'
+      *ngIf="!ingredients.length"
+    >
       <app-empty>
         Start adding new ingredients to your shopping list above!
       </app-empty>
